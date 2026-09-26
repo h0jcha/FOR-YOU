@@ -1,0 +1,944 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+
+    background:
+        radial-gradient(
+            ellipse 75% 55% at 50% 8%,
+            rgba(255, 255, 255, 0.78),
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 70% 55% at 50% 100%,
+            rgba(150, 132, 110, 0.15),
+            transparent 72%
+        ),
+        linear-gradient(
+            135deg,
+            #e8e2d9,
+            #eee9e1 48%,
+            #e5ded4
+        );
+
+    color: #302d29;
+
+    font-family:
+        Iowan Old Style,
+        Baskerville,
+        "Times New Roman",
+        serif;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================================
+   OPENING
+   ========================================================= */
+
+.opening {
+    position: fixed;
+    inset: 0;
+
+    z-index: 50;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(255, 255, 255, 0.5),
+            transparent 65%
+        ),
+        #f4efe7;
+
+    transition:
+        opacity 1.6s cubic-bezier(0.22, 0.61, 0.36, 1),
+        visibility 1.6s ease;
+}
+
+.opening-content {
+    padding: 2rem;
+
+    text-align: center;
+
+    transition:
+        opacity 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 1.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.opening-title {
+    margin: 0;
+
+    color: #2f2c28;
+
+    font-size:
+        clamp(2.4rem, 6vw, 4rem);
+
+    font-weight: 400;
+
+    letter-spacing: -0.025em;
+}
+
+.opening-subtitle {
+    margin:
+        1rem
+        0
+        2.5rem;
+
+    color: #403b35;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 0.78rem;
+
+    letter-spacing: 0.14em;
+
+    opacity: 0.4;
+}
+
+.open-button {
+    border: 0;
+
+    border-bottom:
+        1px solid
+        rgba(41, 39, 37, 0.28);
+
+    padding: 0.3rem 0;
+
+    background: transparent;
+
+    color: #292725;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.open-button:hover {
+    opacity: 0.55;
+    border-color: transparent;
+}
+
+
+/* =========================================================
+   LETTER PAGE
+   ========================================================= */
+
+.letter-page {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding:
+        8rem
+        1.5rem
+        11rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+        visibility 1.8s ease;
+}
+
+
+/* =========================================================
+   REVEAL LINE
+   ========================================================= */
+
+.paper-reveal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.8s ease;
+}
+
+.paper-reveal-line {
+    width: 0;
+    height: 1px;
+
+    background:
+        rgba(76, 65, 53, 0.12);
+
+    box-shadow:
+        0 0 18px rgba(255, 255, 255, 0.75);
+
+    transition:
+        width 1.25s
+        cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+/* =========================================================
+   PAPER
+   ========================================================= */
+
+.letter-paper {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(100%, 600px);
+
+    margin: 0 auto;
+
+    padding:
+        5.5rem
+        5.15rem
+        5.8rem;
+
+    background:
+        linear-gradient(
+            112deg,
+            rgba(255, 255, 255, 0.66) 0%,
+            rgba(255, 253, 248, 0.98) 24%,
+            rgba(250, 247, 240, 0.99) 58%,
+            rgba(246, 241, 232, 0.98) 82%,
+            rgba(237, 230, 218, 0.9) 100%
+        );
+
+    box-shadow:
+        0 1px 1px rgba(43, 34, 25, 0.11),
+        0 3px 6px rgba(43, 34, 25, 0.075),
+        0 10px 22px rgba(43, 34, 25, 0.065),
+        0 24px 48px rgba(43, 34, 25, 0.055),
+        0 42px 75px rgba(43, 34, 25, 0.035);
+
+    opacity: 0;
+
+    transform:
+        translateY(24px)
+        scale(0.985);
+
+    transition:
+        opacity 1.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 1.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+    clip-path: polygon(
+        0.4% 0.3%,
+        13% 0.55%,
+        25% 0.25%,
+        39% 0.5%,
+        52% 0.22%,
+        66% 0.48%,
+        81% 0.28%,
+        99.55% 0.48%,
+
+        99.7% 20%,
+        99.35% 40%,
+        99.62% 60%,
+        99.3% 80%,
+        99.55% 99.5%,
+
+        82% 99.25%,
+        65% 99.55%,
+        48% 99.25%,
+        31% 99.5%,
+        14% 99.25%,
+        0.45% 99.55%,
+
+        0.28% 80%,
+        0.58% 60%,
+        0.3% 40%,
+        0.52% 20%
+    );
+}
+
+
+/* =========================================================
+   PAPER LIGHTING
+   ========================================================= */
+
+.letter-paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse 85% 55% at 18% 8%,
+            rgba(255, 255, 255, 0.62),
+            transparent 68%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(116, 95, 72, 0.045),
+            transparent 12%,
+            transparent 84%,
+            rgba(116, 95, 72, 0.055)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.12),
+            transparent 22%,
+            transparent 78%,
+            rgba(112, 91, 69, 0.045)
+        );
+
+    opacity: 0.9;
+}
+
+.letter-paper::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(82, 67, 51, 0.055),
+            transparent 4%,
+            transparent 96%,
+            rgba(82, 67, 51, 0.065)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(82, 67, 51, 0.04),
+            transparent 4%,
+            transparent 96%,
+            rgba(82, 67, 51, 0.055)
+        );
+
+    opacity: 0.65;
+}
+
+
+/* =========================================================
+   PAPER GRAIN
+   ========================================================= */
+
+.letter-paper-grain {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.46;
+
+    background:
+        repeating-linear-gradient(
+            17deg,
+            rgba(86, 68, 49, 0.012) 0px,
+            rgba(86, 68, 49, 0.012) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        repeating-linear-gradient(
+            103deg,
+            rgba(255, 255, 255, 0.08) 0px,
+            rgba(255, 255, 255, 0.08) 1px,
+            transparent 1px,
+            transparent 5px
+        ),
+        radial-gradient(
+            circle at 13% 17%,
+            rgba(70, 55, 40, 0.028) 0 0.65px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle at 71% 32%,
+            rgba(70, 55, 40, 0.024) 0 0.6px,
+            transparent 0.95px
+        ),
+        radial-gradient(
+            circle at 43% 76%,
+            rgba(70, 55, 40, 0.026) 0 0.65px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle at 87% 89%,
+            rgba(70, 55, 40, 0.021) 0 0.55px,
+            transparent 0.9px
+        );
+
+    background-size:
+        auto,
+        auto,
+        19px 21px,
+        27px 24px,
+        31px 29px,
+        37px 33px;
+
+    mix-blend-mode: multiply;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.letter-content {
+    position: relative;
+
+    z-index: 5;
+
+    /*
+       Slightly larger and more comfortable for long-form
+       reading while remaining delicate.
+    */
+
+    font-size: 0.91rem;
+
+    line-height: 2;
+
+    letter-spacing: 0.003em;
+
+    opacity: 0;
+
+    transform: translateY(7px);
+
+    transition:
+        opacity 1.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+        transform 1.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.letter-heading {
+    position: relative;
+
+    margin-bottom: 4.05rem;
+
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
+
+    font-size: 1rem;
+
+    font-weight: 400;
+
+    color: #3c3833;
+
+    opacity: 0.72;
+
+    transform: rotate(-1.2deg);
+}
+
+.letter-heading::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1.65rem;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(70, 60, 50, 0.1),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   PARAGRAPHS
+   ========================================================= */
+
+.letter-content p {
+    margin:
+        0
+        0
+        3rem;
+
+    color: #302d29;
+
+    font-size: inherit;
+
+    line-height: inherit;
+}
+
+.letter-content p:not(:last-of-type)::after {
+    content: none;
+}
+
+
+/* =========================================================
+   ENDING
+   ========================================================= */
+
+.ending {
+    margin-top: 5.9rem;
+
+    text-align: center;
+
+    color: #3a332d;
+
+    font-family:
+        "Kaiti SC",
+        "STKaiti",
+        "KaiTi",
+        "DFKai-SB",
+        serif;
+
+    font-size: 1.25rem;
+
+    font-weight: 400;
+
+    letter-spacing: 0.12em;
+
+    opacity: 0.76;
+
+    transform: rotate(-0.8deg);
+}
+
+.ending::before {
+    content: "";
+
+    display: block;
+
+    width: 52px;
+    height: 1px;
+
+    margin:
+        0
+        auto
+        1.9rem;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(70, 60, 50, 0.14),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   MUSIC INDICATOR
+   ========================================================= */
+
+.music-indicator {
+    position: fixed;
+
+    left: 50%;
+    bottom: 1.5rem;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+
+    gap: 0.55rem;
+
+    transform:
+        translate(-50%, 10px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    color: #4b433c;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.music-symbol {
+    font-family: serif;
+
+    font-size: 0.8rem;
+
+    opacity: 0.55;
+}
+
+.music-info {
+    display: flex;
+    align-items: baseline;
+
+    gap: 0.3rem;
+
+    white-space: nowrap;
+}
+
+.music-title {
+    font-size: 0.64rem;
+
+    letter-spacing: 0.06em;
+
+    opacity: 0.68;
+}
+
+.music-artist {
+    font-size: 0.55rem;
+
+    letter-spacing: 0.04em;
+
+    opacity: 0.38;
+}
+
+.music-wave {
+    display: flex;
+    align-items: center;
+
+    gap: 2px;
+
+    height: 12px;
+
+    margin-left: 0.15rem;
+}
+
+.music-wave i {
+    display: block;
+
+    width: 1px;
+
+    background:
+        rgba(75, 67, 60, 0.45);
+
+    animation:
+        musicWave 1.2s ease-in-out infinite;
+}
+
+.music-wave i:nth-child(1) {
+    height: 5px;
+}
+
+.music-wave i:nth-child(2) {
+    height: 10px;
+
+    animation-delay: 0.18s;
+}
+
+.music-wave i:nth-child(3) {
+    height: 6px;
+
+    animation-delay: 0.35s;
+}
+
+@keyframes musicWave {
+
+    0%,
+    100% {
+        transform: scaleY(0.55);
+        opacity: 0.35;
+    }
+
+    50% {
+        transform: scaleY(1);
+        opacity: 0.7;
+    }
+}
+
+
+/* =========================================================
+   OPENED STATE
+   ========================================================= */
+
+body.opened .opening {
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+body.opened .opening-content {
+    opacity: 0;
+
+    transform: translateY(-8px);
+}
+
+body.opened .letter-page {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+/* =========================================================
+   REVEAL SEQUENCE
+   ========================================================= */
+
+body.opened .paper-reveal {
+    opacity: 1;
+
+    transition-delay: 0s;
+}
+
+body.opened .paper-reveal-line {
+    width: min(600px, 76vw);
+
+    transition-delay: 0.05s;
+}
+
+body.opened .letter-paper {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    transition-delay: 0.45s;
+}
+
+body.opened .paper-reveal {
+    opacity: 0;
+
+    transition-delay: 1.15s;
+}
+
+body.opened .letter-content {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    transition-delay: 1.05s;
+}
+
+body.opened .music-indicator {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translate(-50%, 0);
+
+    transition-delay: 1.9s;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .opening-content {
+        padding: 1.5rem;
+    }
+
+    .opening-title {
+        font-size: 2.8rem;
+    }
+
+    .opening-subtitle {
+        margin-bottom: 2.3rem;
+    }
+
+
+    .letter-page {
+        padding:
+            5rem
+            1rem
+            8rem;
+    }
+
+
+    .letter-paper {
+        width: 88vw;
+
+        padding:
+            3.5rem
+            1.75rem
+            4.1rem;
+
+        box-shadow:
+            0 1px 1px rgba(43, 34, 25, 0.10),
+            0 3px 6px rgba(43, 34, 25, 0.065),
+            0 10px 22px rgba(43, 34, 25, 0.06),
+            0 22px 40px rgba(43, 34, 25, 0.045),
+            0 38px 65px rgba(43, 34, 25, 0.03);
+    }
+
+
+    .letter-content {
+        font-size: 0.85rem;
+
+        line-height: 1.91;
+
+        letter-spacing: 0.002em;
+    }
+
+
+    .letter-heading {
+        margin-bottom: 3rem;
+
+        font-size: 0.95rem;
+    }
+
+    .letter-heading::before {
+        bottom: -1.3rem;
+    }
+
+
+    .letter-content p {
+        margin-bottom: 2.45rem;
+    }
+
+
+    .ending {
+        margin-top: 4.6rem;
+
+        font-size: 1.08rem;
+    }
+
+    .ending::before {
+        margin-bottom: 1.45rem;
+    }
+
+
+    .music-indicator {
+        position: fixed;
+
+        left: 50%;
+        bottom: 18px;
+
+        z-index: 50;
+
+        width: max-content;
+        max-width: calc(100vw - 32px);
+
+        gap: 0.42rem;
+
+        transform:
+            translate(-50%, 8px);
+    }
+
+    .music-title {
+        font-size: 0.59rem;
+    }
+
+    .music-artist {
+        font-size: 0.51rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .letter-paper {
+        width: 91vw;
+
+        padding:
+            3rem
+            1.4rem
+            3.5rem;
+    }
+
+    .letter-content {
+        font-size: 0.82rem;
+
+        line-height: 1.88;
+    }
+
+    .letter-heading {
+        margin-bottom: 2.8rem;
+    }
+
+    .letter-content p {
+        margin-bottom: 2.3rem;
+    }
+
+    .ending {
+        margin-top: 4rem;
+    }
+
+    .music-artist {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .opening,
+    .opening-content,
+    .letter-page,
+    .paper-reveal,
+    .paper-reveal-line,
+    .letter-paper,
+    .letter-content,
+    .music-indicator {
+        transition: none !important;
+    }
+
+    .music-wave i {
+        animation: none;
+    }
+}

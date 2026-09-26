@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>for you.</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =====================================================
+         OPENING
+         ===================================================== -->
+
+    <main
+        id="opening"
+        class="opening"
+    >
+
+        <div class="opening-content">
+
+            <p class="opening-title">
+                for you.
+            </p>
+
+            <p class="opening-subtitle">
+                take your time.
+            </p>
+
+            <button
+                id="openButton"
+                class="open-button"
+                type="button"
+            >
+                open the letter
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         LETTER PAGE
+         ===================================================== -->
+
+    <main
+        id="letterPage"
+        class="letter-page"
+        aria-hidden="true"
+    >
+
+        <!--
+            The reveal layer exists only for the opening
+            animation. Once the letter is revealed, it
+            becomes visually insignificant.
+        -->
+
+        <div
+            class="paper-reveal"
+            aria-hidden="true"
+        >
+            <div class="paper-reveal-line"></div>
+        </div>
+
+
+        <!-- =================================================
+             LETTER
+             ================================================= -->
+
+        <article class="letter-paper">
+
+            <div
+                class="letter-paper-grain"
+                aria-hidden="true"
+            ></div>
+
+            <div class="letter-content">
+
+                <div class="letter-heading">
+                    for you,
+                </div>
+
+
+                <p>
+                    i think, more than anything, i am grateful that i got to know what it feels like to be loved by you. i'm not sure what you saw in me, nor what made you decide i was worth staying for. i have spent enough time with myself to know all the things that make me difficult to love, all the ways i fall short, and all the parts of me i have never quite known what to do with. and still, somehow, you stayed. you made space for me. you let me belong in your life. you gave me something i could never have given myself: the knowing that love and warmth existed here, in this life, and that i am allowed to experience them.
+                </p>
+
+                <p>
+                    if there is anything i have been given in abundance, it is you. there are so many things i could say about you, but somehow, none of them would ever suffice. thank you for giving me memories i know i will keep returning to. if i have ever made it through something believing that there was still goodness in the world, a part of that belief came from knowing you.
+                </p>
+
+                <p>
+                    i know i may never fully deserve the love you have given me, but i hope you know that i have always kept it in my heart. i love you more than i have ever been able to put into words, and i will always carry an immense gratitude for having known you at all.
+                </p>
+
+                <p>
+                    i have never been very good at believing that good things could simply be mine, but i have never been able to look at you and call you anything but a beautiful blessing :) and if i have been fortunate in this life, it is because i am fortunate enough to have you.
+                </p>
+
+                <p>
+                    i don't know what i did to deserve being loved by you. truthfully, i don't think i ever will. but i know that i love you. i know that i am grateful for you. and i know that, whatever else this life may be and have been, it was made infinitely more beautiful by the fact that i am getting to live some of it alongside you.
+                </p>
+
+
+                <div class="ending">
+                    我爱你
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             MUSIC INDICATOR
+             ================================================= -->
+
+        <div
+            id="musicIndicator"
+            class="music-indicator"
+            aria-label="Now playing Keep Me by Novo Amor"
+        >
+
+            <span
+                class="music-symbol"
+                aria-hidden="true"
+            >
+                ♫
+            </span>
+
+            <span class="music-info">
+
+                <span class="music-title">
+                    Keep Me
+                </span>
+
+                <span class="music-artist">
+                    Novo Amor
+                </span>
+
+            </span>
+
+            <span
+                class="music-wave"
+                aria-hidden="true"
+            >
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         MUSIC
+         ===================================================== -->
+
+    <audio
+        id="bgMusic"
+        loop
+        preload="auto"
+    >
+        <source
+            src="music/song.mp3"
+            type="audio/mpeg"
+        >
+    </audio>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
